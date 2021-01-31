@@ -32,24 +32,29 @@ public class MainActivity extends AppCompatActivity
         inputLeft.addTextChangedListener(new TextWatcher()
         {
             Editable input;
+            Editable inputRight1;
             double output;
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after)
             {
                 input = inputLeft.getEditableText();
             }
+            
             //Example: (50°F - 32) x .5556 = 10°C
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count)
             {
+                float a = Float.parseFloat(String.valueOf(input));
+                float result = (float) ((a - 32.0) * 0.5556);
 
-                inputRight.setText((Float.parseFloat(input - 32.0))*0.5556);
+                inputRight.setText(String.valueOf(result));
+
             }
 
             @Override
             public void afterTextChanged(Editable s)
             {
-                inputRight.setText(input);
+
             }
         });
 
