@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import static java.lang.Float.*;
+
 public class MainActivity extends AppCompatActivity
 {
 
@@ -30,16 +32,18 @@ public class MainActivity extends AppCompatActivity
         inputLeft.addTextChangedListener(new TextWatcher()
         {
             Editable input;
+            double output;
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after)
             {
                 input = inputLeft.getEditableText();
             }
-
+            //Example: (50°F - 32) x .5556 = 10°C
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count)
             {
-                inputRight.setText(input);
+
+                inputRight.setText((Float.parseFloat(input - 32.0))*0.5556);
             }
 
             @Override
@@ -52,9 +56,6 @@ public class MainActivity extends AppCompatActivity
 
 
 
-        //get left and right input value from user
-//        float inputFromLeftFloat = Float.parseFloat(inputLeft.getContext().toString());
-//        float inputFromRightFloat = Float.parseFloat(inputRight.getContext().toString());
 
 
 
