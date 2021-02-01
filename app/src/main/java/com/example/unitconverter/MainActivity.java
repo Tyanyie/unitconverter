@@ -13,9 +13,6 @@ import static java.lang.Float.*;
 
 public class MainActivity extends AppCompatActivity
 {
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -28,17 +25,22 @@ public class MainActivity extends AppCompatActivity
         TextView textLeft = (TextView)findViewById(R.id.textLeft);
         TextView textRight = (TextView)findViewById(R.id.textRight);
 
+        /*
+        * Todo:
+        *  - input field can not enter negative value (it only works on input number first and then negative sign)         <----------------
+        *  - app will auto close after delete value in input field                                                         <----------------
+        * */
 
             inputLeft.addTextChangedListener(new TextWatcher()
             {
                 Editable input;
-                Editable inputRight1;
-                double output;
+
 
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after)
                 {
                     input = inputLeft.getEditableText();
+
                 }
 
                 //Example: (50°F - 32) x .5556 = 10°C
@@ -46,11 +48,12 @@ public class MainActivity extends AppCompatActivity
                 public void onTextChanged(CharSequence s, int start, int before, int count)
                 {
 
-                    input = inputLeft.getEditableText();
+                    //input = inputLeft.getEditableText();
                     float a = Float.parseFloat(String.valueOf(input));
                     float result = (float) ((a - 32.0) * 0.5556);
 
                     inputRight.setText(String.valueOf(result));
+
                 }
 
                 @Override
