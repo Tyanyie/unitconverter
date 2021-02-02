@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -16,6 +17,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
+        final String TAG = ">>>>>>>";
+        Log.v(TAG, "Start of On create");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -34,12 +38,13 @@ public class MainActivity extends AppCompatActivity
             inputLeft.addTextChangedListener(new TextWatcher()
             {
                 Editable input;
-
+                float result;
 
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after)
                 {
                     input = inputLeft.getEditableText();
+                    Log.v(TAG, "Before Text Changed");
 
                 }
 
@@ -47,19 +52,17 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count)
                 {
-
                     //input = inputLeft.getEditableText();
                     float a = Float.parseFloat(String.valueOf(input));
-                    float result = (float) ((a - 32.0) * 0.5556);
-
-                    inputRight.setText(String.valueOf(result));
-
+                    result = (float) ((a - 32.0) * 0.5556);
+                    Log.v(TAG, "On Text Changed");
                 }
 
                 @Override
                 public void afterTextChanged(Editable s)
                 {
-
+                    inputRight.setText(String.valueOf(result));
+                    Log.v(TAG, "After Text Changed");
                 }
             });
 
@@ -79,7 +82,7 @@ public class MainActivity extends AppCompatActivity
                 System.out.print("Null Pointer Exception Occurred");
             }
 
-
+        Log.v(TAG, "End of On create");
 
 
 
