@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void afterTextChanged(Editable s)
                 {
-                    inputRight.setText(String.valueOf(result));
+
+                    inputRight.setText(String.format("%.2f",(result)));
                     Log.v(TAG, "After Text Changed");
                 }
             });
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void afterTextChanged(Editable s)
                 {
-                    inputRight2.setText(String.valueOf(result2));
+                    inputRight2.setText(String.format("%.2f",(result2)));
                 }
             });
     }
